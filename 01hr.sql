@@ -1,10 +1,10 @@
--- 선택 테이블 DB의 모든 열을 가져온다.
-select * from employees;
-
+-- 선택 테이블의 모든 칼럼(열)을 가져온다.
+SELECT * FROM employees;
 SELECT * FROM departments;
 
--- departments 에서 department_id 랑 location_id 만 사용
-SELECT department_id, location_id FROM departments;
+-- 선택 테이블의 특정 칼럼(열)만 조회
+SELECT department_id, location_id
+FROM departments;
 
 -- 순서 바꿔보기
 SELECT location_id, department_id FROM departments;
@@ -15,8 +15,8 @@ DESC departments;
 -- 과제: employees 구조를 확인하라
 DESC employees;
 
+-- 산술 연산자 (+-*/ [숫자와 쓰는 연산자], +-[날짜와 쓰는 연산자])
 SELECT last_name, salary FROM employees;
-
 SELECT last_name, salary + 300 FROM employees;
 
 -- 과제: 사원들의 월급, 연봉을 조회하라. (연봉은 DB테이블에 없기 때문에 월급 * 12 표현식을 써서 새로 생성한다.)
@@ -30,8 +30,10 @@ SELECT last_name, job_id, commission_pct FROM employees;
 
 SELECT salary, salary * 12 + salary * 12 * commission_pct FROM employees;
 
--- as : 칼럼의 이름을 직접적으로 바꾸는 것 (as는 생략이 가능하다.)
-SELECT last_name as name, commission_pct comm FROM employees;
+-- 칼럼의 이름을 직접적으로 바꾸기
+SELECT last_name as name FROM employees;    -- as는 생략이 가능
+SELECT last_name name2 FROM employees;
+SELECT last_name "name3" FROM employees;
 
 SELECT last_name "NAME", salary * 12 "Annual Salary" FROM employees;
 
@@ -44,8 +46,8 @@ SELECT employee_id "EMP #", last_name "Name", job_id "Job", hire_date "Hire Date
 -- || : 붙이기 연산자 두 칼럼을 붙여서 새로운 하나의 칼럼으로 생성한다.
 SELECT last_name || job_id FROM employees;
 
+-- 캐릭터 값 넣기
 SELECT last_name || ' is ' || job_id FROM employees;
-
 SELECT last_name || ' is ' || job_id employees FROM employees;
 
 SELECT last_name || null FROM employees;
